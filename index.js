@@ -2,10 +2,12 @@ function getDistance(x1, y1, x2, y2) {
   if (arguments.length !== 4) {
     throw new Error();
   }
+
   for (let arg of arguments) {
     if (arg > 1000 || arg < -1000) {
       throw new Error();
     }
+
     if (arg === Infinity || arg === -Infinity || arg === NaN) {
       throw new Error();
     }
@@ -14,14 +16,14 @@ function getDistance(x1, y1, x2, y2) {
       throw new Error();
     }
   }
-  const distance = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
-  return distance;
+
+  return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
 }
 
 //==============================TASK 2====================================//
 
 function switchPlaces(arr) {
-  if (Array.isArray(arr) === false || arr == undefined) {
+  if (Array.isArray(arr) === false) {
     throw new Error();
   }
 
@@ -29,24 +31,19 @@ function switchPlaces(arr) {
     return arr;
   }
 
-  let result = [];
+  const result = [];
+  result.push(...arr.slice(Math.ceil(arr.length / 2), arr.length));
 
-  for (let i = Math.round(arr.length / 2); i < arr.length; i++) {
-    result.push(arr[i]);
-  }
-  if (arr.length % 2 === 0) {
-    for (let i = 0; i < Math.round(arr.length / 2); i++) {
-      result.push(arr[i]);
-    }
-  } else {
+  if (arr.length % 2 !== 0) {
     result.push(arr[Math.floor(arr.length / 2)]);
-    for (let i = 0; i < Math.floor(arr.length / 2); i++) {
-      result.push(arr[i]);
-    }
   }
+
+  result.push(...arr.slice(0, arr.length / 2));
+
   return result;
 }
 
+console.log(switchPlaces([1, 2, 4, 0, 9, 6, 7]));
 //==============================TASK 3====================================//
 
 function getDivisors(number) {
@@ -58,11 +55,14 @@ function getDivisors(number) {
   ) {
     throw new Error();
   }
-  let divisors = [];
-  for (i = number; i >= 1; i--) {
+
+  const divisors = [];
+
+  for (let i = number; i >= 1; i--) {
     if (number % i === 0) {
       divisors.push(i);
     }
   }
+
   return divisors;
 }
