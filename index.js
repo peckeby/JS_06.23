@@ -43,7 +43,6 @@ function switchPlaces(arr) {
   return result;
 }
 
-console.log(switchPlaces([1, 2, 4, 0, 9, 6, 7]));
 //==============================TASK 3====================================//
 
 function getDivisors(number) {
