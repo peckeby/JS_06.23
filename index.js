@@ -26,7 +26,7 @@ function createDebounceFunction(func, time) {
 //=====================================Task 2=============================================//
 class RickAndMorty {
   getCharacter(characterId) {
-    if (Number.isInteger(characterId) === false || characterId <= 0) {
+    if (Number.isInteger(characterId) === false || characterId < 0) {
       throw new Error("Invalid character id");
     }
 
@@ -42,10 +42,12 @@ class RickAndMorty {
             throw new Error(`${res.statusText}`);
         }
       })
-      .catch((error) => console.log(error));
+      .catch(() => {
+        return null;
+      });
   }
   async getEpisode(episodeId) {
-    if (Number.isInteger(episodeId) === false || episodeId <= 0) {
+    if (Number.isInteger(episodeId) === false || episodeId < 0) {
       throw new Error("Invalid episode id");
     }
 
@@ -63,7 +65,7 @@ class RickAndMorty {
           throw new Error(`${res.statusText}`);
       }
     } catch (error) {
-      return console.log(error);
+      return null;
     }
   }
 }
