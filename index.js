@@ -16,14 +16,8 @@ function createDebounceFunction(func, time) {
   };
 }
 
-// const logTo = () => console.log("object");
-// const debounced = createDebounceFunction(logTo, 3000);
-
-// debounced();
-
-// setTimeout(debounced, 2000);
-
 //=====================================Task 2=============================================//
+
 class RickAndMorty {
   getCharacter(characterId) {
     if (Number.isInteger(characterId) === false || characterId < 0) {
@@ -69,6 +63,3 @@ class RickAndMorty {
     }
   }
 }
-
-// const rm = new RickAndMorty();
-// rm.getCharacter(44).then((res) => console.log(res.name));
