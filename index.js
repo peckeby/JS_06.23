@@ -94,7 +94,7 @@ class LinkedList {
   append(data) {
     const node = new Node(data);
     if (this.#head === null) {
-      this.head = node;
+      this.#head = node;
       this.#tail = node;
     } else {
       this.#tail.next = node;
@@ -104,11 +104,11 @@ class LinkedList {
   prepend(data) {
     const node = new Node(data);
     if (this.#head == null) {
-      this.head = node;
+      this.#head = node;
       this.#tail = node;
     } else {
       node.next = this.#head;
-      this.head = node;
+      this.#head = node;
     }
   }
 
@@ -135,38 +135,28 @@ class LinkedList {
   }
 }
 
-// const elmnts = [1, 3, 4, 6, 8];
-// const stack = Stack.fromIterable(elmnts);
-// console.log(stack.toArray());
-// stack.pop();
-// console.log(stack.toArray());
-
-// stack.pop();
-// console.log(stack.toArray());
-
-// stack.pop();
-// console.log(stack.toArray());
-
-// stack.pop();
-// console.log(stack.toArray());
-
-// stack.pop();
-// console.log(stack.toArray());
-// console.log(stack.isEmpty());
-
-// stack.push(2);
-// stack.push(5);
-
-// console.log(linkedList.find(323));
-
 //==============================================Task 3=============================================//
+function isStringOfLengthBetween(value, min, max) {
+  return (
+    typeof value === "string" && value.length <= max && value.length >= min
+  );
+}
+
+function isIntegerBetween(value, min, max) {
+  return Number.isInteger(value) && value >= min && value <= max;
+}
+
+function isPositiveInteger(value, min) {
+  return Number.isInteger(value) && value > min;
+}
+
 class Car {
   #brand = "";
   get brand() {
     return this.#brand;
   }
   set brand(name) {
-    if (typeof name !== "string" || name.length > 50 || name.length < 1) {
+    if (!isStringOfLengthBetween(name, 1, 50)) {
       throw new Error("Invalid brand name");
     }
 
@@ -178,7 +168,7 @@ class Car {
     return this.#model;
   }
   set model(name) {
-    if (typeof name !== "string" || name.length > 50 || name.length < 1) {
+    if (!isStringOfLengthBetween(name, 1, 50)) {
       throw new Error("Invalid brand model");
     }
 
@@ -190,7 +180,8 @@ class Car {
     return this.#yearOfManufacturing;
   }
   set yearOfManufacturing(year) {
-    if (!Number.isInteger(year) || year < 1950 || year > 2023) {
+    currentYear = new Date(Date.now()).getFullYear();
+    if (!isIntegerBetween(year, 1950, currentYear)) {
       throw new Error("Invalid year of manufacturing");
     }
 
@@ -202,7 +193,7 @@ class Car {
     return this.#maxSpeed;
   }
   set maxSpeed(speed) {
-    if (!Number.isInteger(speed) || speed < 100 || speed > 330) {
+    if (!isIntegerBetween(speed, 100, 330)) {
       throw new Error("Invalid max speed");
     }
 
@@ -214,7 +205,7 @@ class Car {
     return this.#maxFuelVolume;
   }
   set maxFuelVolume(volume) {
-    if (!Number.isInteger(volume) || volume < 20 || volume > 100) {
+    if (!isIntegerBetween(volume, 20, 100)) {
       throw new Error("Invalid max fuel volume");
     }
 
@@ -226,7 +217,7 @@ class Car {
     return this.#fuelConsumption;
   }
   set fuelConsumption(volume) {
-    if (!Number.isInteger(volume) || volume < 1) {
+    if (!isPositiveInteger(volume, 1)) {
       throw new Error("Invalid fuel consumption");
     }
 
@@ -238,7 +229,7 @@ class Car {
     return this.#damage;
   }
   set damage(rate) {
-    if (!Number.isInteger(rate) || rate < 1 || rate > 5) {
+    if (!isIntegerBetween(rate, 1, 5)) {
       throw new Error("Invalid damage");
     }
 
@@ -282,7 +273,7 @@ class Car {
   }
 
   fillUpGasTank(volume) {
-    if (!Number.isInteger(volume) || volume < 1) {
+    if (!isPositiveInteger(volume, 1)) {
       throw new Error("Invalid fuel amount");
     }
     if (volume + this.#currentFuelVolume > this.#maxFuelVolume) {
@@ -295,11 +286,11 @@ class Car {
   }
 
   drive(speed, hours) {
-    if (!Number.isInteger(speed) || speed < 1) {
+    if (!isPositiveInteger(speed, 1)) {
       throw new Error("Invalid speed");
     }
 
-    if (!Number.isInteger(hours) || hours < 1) {
+    if (!isPositiveInteger(hours, 1)) {
       throw new Error("Invalid duration");
     }
 
@@ -342,32 +333,6 @@ class Car {
   }
 
   getFullAmount() {
-    if (this.#currentFuelVolume === this.#maxFuelVolume) {
-      return 0;
-    } else {
-      return this.#maxFuelVolume - this.#currentFuelVolume;
-    }
+    return this.#maxFuelVolume - this.#currentFuelVolume;
   }
 }
-
-const instance = new Car();
-// console.log(instance.brand);
-
-// instance.brand = "334";
-instance.fillUpGasTank(17);
-console.log(instance.currentFuelVolume);
-
-instance.start();
-console.log(instance.isStarted);
-instance.drive(100, 10);
-
-console.log(instance.health);
-console.log(instance.currentFuelVolume);
-console.log(instance.mileage);
-
-instance.shutDownEngine();
-console.log(instance.getFullAmount());
-instance.fillUpGasTank({});
-console.log(instance.currentFuelVolume);
-
-console.log(instance.getFullAmount());
