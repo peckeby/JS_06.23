@@ -146,8 +146,8 @@ function isIntegerBetween(value, min, max) {
   return Number.isInteger(value) && value >= min && value <= max;
 }
 
-function isPositiveInteger(value, min) {
-  return Number.isInteger(value) && value > min;
+function isPositiveInteger(value) {
+  return Number.isInteger(value) && value > 0;
 }
 
 class Car {
@@ -180,7 +180,8 @@ class Car {
     return this.#yearOfManufacturing;
   }
   set yearOfManufacturing(year) {
-    currentYear = new Date(Date.now()).getFullYear();
+    const currentYear = new Date(Date.now()).getFullYear();
+
     if (!isIntegerBetween(year, 1950, currentYear)) {
       throw new Error("Invalid year of manufacturing");
     }
@@ -217,7 +218,7 @@ class Car {
     return this.#fuelConsumption;
   }
   set fuelConsumption(volume) {
-    if (!isPositiveInteger(volume, 1)) {
+    if (!isPositiveInteger(volume)) {
       throw new Error("Invalid fuel consumption");
     }
 
@@ -273,7 +274,7 @@ class Car {
   }
 
   fillUpGasTank(volume) {
-    if (!isPositiveInteger(volume, 1)) {
+    if (!isPositiveInteger(volume)) {
       throw new Error("Invalid fuel amount");
     }
     if (volume + this.#currentFuelVolume > this.#maxFuelVolume) {
@@ -286,11 +287,11 @@ class Car {
   }
 
   drive(speed, hours) {
-    if (!isPositiveInteger(speed, 1)) {
+    if (!isPositiveInteger(speed)) {
       throw new Error("Invalid speed");
     }
 
-    if (!isPositiveInteger(hours, 1)) {
+    if (!isPositiveInteger(hours)) {
       throw new Error("Invalid duration");
     }
 
