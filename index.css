@@ -1,0 +1,115 @@
+:root {
+  --input-border: #8b8a8b;
+  --input-focus-h: 245;
+  --input-focus-s: 100%;
+  --input-focus-l: 42%;
+}
+
+html {
+  font-family: "Raleway";
+}
+
+li {
+  list-style: none;
+}
+
+.container {
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header {
+  padding: 5px 0px;
+  text-align: center;
+  border-bottom: 2px solid;
+}
+
+.navbar {
+  padding-top: 25px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 40px;
+}
+
+.search-input {
+  background-color: transparent;
+  border: none;
+  width: 100px;
+}
+
+main {
+  padding-top: 20px;
+}
+
+.notes-list {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 25px;
+}
+
+.new-note {
+  width: 300px;
+  height: 250px;
+  background-color: antiquewhite;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.new-note__header {
+  text-align: center;
+}
+
+.new-note__add-name-input {
+  margin-left: 20px;
+  border-radius: 10px;
+  border: none;
+  width: 187px;
+}
+
+.new-note__content-area {
+  display: flex;
+  margin-top: 20px;
+  align-items: center;
+}
+
+.new-note__add-content-input {
+  margin-left: 10px;
+  border-radius: 10px;
+  border: none;
+  width: 185px;
+  height: 90px;
+  resize: none;
+  transition: 180ms box-shadow ease-in-out;
+}
+
+.new-note__add-content-input:focus,
+.new-note__add-name-input:focus {
+  box-shadow: 0 0 0 3px
+    hsla(
+      var(--input-focus-h),
+      var(--input-focus-s),
+      calc(var(--input-focus-l) + 40%),
+      0.8
+    );
+  outline: 3px solid transparent;
+}
+
+.new-note__add-btn {
+  border: none;
+  background-color: white;
+  border-radius: 10px;
+  padding: 5px 20px;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer;
+}
+
+.note__delete-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}

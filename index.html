@@ -1,0 +1,61 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <header class="header">
+      <h1>My notes</h1>
+    </header>
+    <nav class="navbar container">
+      <label for="search"><h2>Search:</h2></label>
+      <input
+        type="search"
+        class="search-input"
+        required
+        minlength="5"
+        maxlength="15"
+      />
+      <h2>Favorites</h2>
+    </nav>
+    <main class="container">
+      <ul class="notes-list">
+        <div class="new-note">
+          <h3 class="new-note__header">New note</h3>
+          <form id="new-note-form">
+            <label for="name">Name</label>
+            <input
+              type="name"
+              class="new-note__add-name-input"
+              name="name"
+              required
+              minlength="5"
+              maxlength="15"
+            />
+            <div class="new-note__content-area">
+              <label for="content">Content</label>
+              <textarea
+                class="new-note__add-content-input"
+                required
+                minlength="5"
+                maxlength="100"
+              ></textarea>
+            </div>
+            <button class="new-note__add-btn" type="submit">Add note</button>
+          </form>
+        </div>
+      </ul>
+    </main>
+    <footer></footer>
+    <script src="./index.js"></script>
+  </body>
+</html>
