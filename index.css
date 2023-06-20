@@ -13,6 +13,17 @@ li {
   list-style: none;
 }
 
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
 .container {
   max-width: 1400px;
   margin-left: auto;
@@ -26,17 +37,30 @@ li {
 }
 
 .navbar {
-  padding-top: 25px;
+  height: 100px;
+  margin-top: 25px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   gap: 40px;
+  align-items: center;
 }
 
 .search-input {
   background-color: transparent;
-  border: none;
-  width: 100px;
+  border: 2px solid black;
+  width: 200px;
+  border-radius: 10px;
+  height: 40px;
+}
+
+.search-input::after {
+  content: url("./icons.svg#icon-edit");
+}
+
+.navbar__favorites:hover,
+.active {
+  text-decoration: underline;
 }
 
 main {
@@ -48,11 +72,12 @@ main {
   flex-wrap: wrap;
   flex-direction: row;
   gap: 25px;
+  padding: 0;
 }
 
 .new-note {
   width: 300px;
-  height: 250px;
+  height: 280px;
   background-color: antiquewhite;
   border-radius: 10px;
   padding: 10px;
@@ -86,7 +111,9 @@ main {
 }
 
 .new-note__add-content-input:focus,
-.new-note__add-name-input:focus {
+.new-note__add-name-input:focus,
+.edit-note__add-name-input:focus,
+.edit-note__add-content-input:focus {
   box-shadow: 0 0 0 3px
     hsla(
       var(--input-focus-h),
@@ -97,7 +124,16 @@ main {
   outline: 3px solid transparent;
 }
 
+.new-note__add-content-input:not(:placeholder-shown):required:invalid,
+.new-note__add-name-input:not(:placeholder-shown):required:invalid,
+.edit-note__add-name-input:invalid,
+.edit-note__add-content-input:invalid {
+  border: 2px solid red;
+  box-shadow: none;
+}
+
 .new-note__add-btn {
+  display: block;
   border: none;
   background-color: white;
   border-radius: 10px;
@@ -108,8 +144,47 @@ main {
   cursor: pointer;
 }
 
+.new-note__background-select {
+  display: flex;
+  margin-top: 15px;
+  gap: 20px;
+}
+
 .note__delete-btn {
-  background-color: transparent;
+  padding: 0;
+}
+
+.note__favorite-btn {
+  padding: 0;
+}
+
+.note__edit-btn {
+  padding: 0;
+}
+
+.note__btns {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.edit-note__add-name-input {
+  border-radius: 10px;
+  transition: 180ms box-shadow ease-in-out;
+  width: 185px;
   border: none;
-  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.edit-note__add-content-input {
+  width: 185px;
+  height: 90px;
+  resize: none;
+  border: none;
+  border-radius: 10px;
+  transition: 180ms box-shadow ease-in-out;
+}
+
+.new-note__text {
+  height: 30%;
+  word-wrap: break-word;
 }

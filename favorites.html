@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./favicon.ico" />
+    <link rel="stylesheet" href="./index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <title>My notes - Favorites</title>
+  </head>
+  <body>
+    <header class="header">
+      <a href="./index.html"><h1>My notes</h1></a>
+    </header>
+    <nav class="navbar container">
+      <label for="search"><h2>Search:</h2></label>
+      <input
+        placeholder="...search by name"
+        type="search"
+        class="search-input"
+        required
+        minlength="5"
+        maxlength="15"
+      /><a href="./favorites.html" class="active">
+        <h2>Favorites</h2>
+      </a>
+    </nav>
+    <main class="container">
+      <ul class="notes-list"></ul>
+      <dialog id="dialog">
+        <form>
+          <p></p>
+          <div>
+            Are you sure you want to delete this note?
+            <button id="cancelBtn">No</button>
+            <button id="confirmBtn">Yes</button>
+          </div>
+        </form>
+      </dialog>
+    </main>
+    <footer></footer>
+    <script type="module" src="./note.js"></script>
+    <script type="module" src="./notesStorage.js"></script>
+    <script type="module" src="./notesRenderer.js"></script>
+    <script type="module" src="./favorites.js"></script>
+  </body>
+</html>
